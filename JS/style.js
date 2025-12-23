@@ -1,4 +1,5 @@
 
+// ================== DOM ==================
 var addContact = document.getElementById("add-contact");
 var bghk = document.querySelector(".bghk");
 var cancelBtn = document.querySelector(".cancel-btn");
@@ -27,6 +28,10 @@ var ArrContacts = JSON.parse(localStorage.getItem("Contacts")) || [];
 var ArrHeart = JSON.parse(localStorage.getItem("heart")) || [];
 var ArrStar = JSON.parse(localStorage.getItem("star")) || [];
 
+searchInput.addEventListener("input", function() {
+    displayContacts(searchInput);
+});
+
 function updateNoContactsMessage() 
 {
   if (ArrContacts.length === 0) {
@@ -35,11 +40,6 @@ function updateNoContactsMessage()
     noContactsMessage.classList.add("d-none"); 
   }
 }
-
-searchInput.addEventListener("input", function() {
-    displayContacts(searchInput);
-});
-
 
 function ErrorMessage() { 
   Swal.fire({
@@ -89,7 +89,7 @@ saveContact.addEventListener("click", function () {
 
 
 function displayHeart() {
-  var Cartona = "";
+  var cartona = "";
   for (var i = 0; i < ArrHeart.length; i++) { 
     cartona += `
       <div class="d-flex align-items-center mb-3">
@@ -134,7 +134,7 @@ function displayStar() {
 }
 function displayContacts(element) {
   var element = element ? element.value : "";
-  var Cartona = "";
+  var cartona = "";
   for (var i = 0; i < ArrContacts.length; i++) {
 
     var emailMatch = ArrContacts[i].email.toLowerCase().includes(element.toLowerCase());
@@ -142,7 +142,7 @@ function displayContacts(element) {
     var nameMatch = ArrContacts[i].name.toLowerCase().includes(element.toLowerCase());
     
     if (nameMatch || phoneMatch || emailMatch) {
-      Cartona += `
+      cartona += `
       <div class="col-md-6">
         <div class="card p-3 shadow-sm" style="max-width: 350px;">
           <div class="d-flex align-items-center mb-3">
@@ -199,7 +199,7 @@ function displayContacts(element) {
     `;
     }
   }
-      rowContact.innerHTML = Cartona;
+      rowContact.innerHTML = cartona;
 }
 
 
