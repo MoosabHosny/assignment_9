@@ -1,3 +1,19 @@
+@media (max-width: 768px) {
+    .center-wrapper {
+        width: 100%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .center-wrapper {
+    width: 40%;
+}
+
+ }
+
+
+
+
 :root {
     --primary-color: #6366f1;
     --primary-hover: #4f46e5;
@@ -242,9 +258,9 @@
     z-index: 1;
 }
 
-.center-wrapper {
+/* .center-wrapper {
     width: 40%;
-}
+} */
 
 .form-container {
     max-width: 800px;
